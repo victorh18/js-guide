@@ -1,6 +1,7 @@
-window.onload = () => {
+// window.onload = () => {
     const defaultResult = 0;
     let currentResult = defaultResult;
+    let logEntries = [];
 
     function getUserInput() {
         return parseInt(userInput.value);
@@ -11,11 +12,28 @@ window.onload = () => {
         outputResult(currentResult, descResult);
     }
 
+    function writeToLog(
+        operation, 
+        initialNumber, 
+        enteredNumber, 
+        result
+    ) {
+        let entry = {
+            operation, 
+            initialNumber, 
+            enteredNumber, 
+            result
+        };
+        logEntries.push(entry);
+        console.log(logEntries);
+    }
+
     function add() {
         const enteredNumber = getUserInput();
         const initialValue = currentResult;
         currentResult += enteredNumber;
         createAndWriteOutput('+', initialValue, enteredNumber);
+        writeToLog('ADD', initialValue, enteredNumber, currentResult);
     }
 
     function substract() {
@@ -23,6 +41,7 @@ window.onload = () => {
         const initialValue = currentResult;
         currentResult -= enteredNumber;
         createAndWriteOutput('-', initialValue, enteredNumber);
+        writeToLog('SUBSTRACT', initialValue, enteredNumber, currentResult);
     }
 
     function multiply() {
@@ -30,6 +49,7 @@ window.onload = () => {
         const initialValue = currentResult;
         currentResult *= enteredNumber;
         createAndWriteOutput('*', initialValue, enteredNumber);
+        writeToLog('MULTIPLY', initialValue, enteredNumber, currentResult);
     }
 
     function divide() {
@@ -37,10 +57,11 @@ window.onload = () => {
         const initialValue = currentResult;
         currentResult /= enteredNumber;
         createAndWriteOutput('/', initialValue, enteredNumber);
+        writeToLog('DIVIDE', initialValue, enteredNumber, currentResult);
     }
 
     addBtn.addEventListener('click', add);
     subtractBtn.addEventListener('click', substract);
     multiplyBtn.addEventListener('click', multiply);
     divideBtn.addEventListener('click', divide);
-}
+// }
