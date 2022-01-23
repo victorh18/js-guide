@@ -42,6 +42,7 @@
         currentResult -= enteredNumber;
         createAndWriteOutput('-', initialValue, enteredNumber);
         writeToLog('SUBSTRACT', initialValue, enteredNumber, currentResult);
+        let num = 0
     }
 
     function multiply() {
