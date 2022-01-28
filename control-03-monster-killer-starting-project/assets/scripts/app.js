@@ -12,10 +12,20 @@ let chosenMaxLife = 100;
 
 let playersHealth = chosenMaxLife;
 let monstersHealth = chosenMaxLife;
+let hasBonusLife = true;
 
 function endRound() {
+    const initialPlayerHealth = playersHealth;
     const monsterDealtDamage = dealPlayerDamage(MONSTER_ATTACK_VALUE);
     playersHealth -= monsterDealtDamage;
+
+    if (playersHealth <= 0 && hasBonusLife) {
+        playersHealth = initialPlayerHealth;
+        setPlayerHealth(playersHealth);
+        removeBonusLife();
+        hasBonusLife = false;
+        alert('You should have lost, but the extra life saved you.')
+    }
 
     if (playersHealth > 0 && monstersHealth <= 0 ) {
         alert("you won! :D");
