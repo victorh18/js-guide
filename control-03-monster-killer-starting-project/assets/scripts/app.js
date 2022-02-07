@@ -8,6 +8,7 @@ const AttackModes = {
     STRONG: 'STRONG'
 }
 
+//some changes
 let chosenMaxLife = 100;
 
 let playersHealth = chosenMaxLife;
