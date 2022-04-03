@@ -8,12 +8,16 @@ const AttackModes = {
     STRONG: 'STRONG'
 }
 
-//some changes
-let chosenMaxLife = 100;
+let chosenMaxLife = 0;
+
+do { 
+    chosenMaxLife = parseInt(prompt("Enter the maximum available life for the players.", "100"));
+} while (isNaN(chosenMaxLife) || chosenMaxLife <= 0 );
 
 let playersHealth = chosenMaxLife;
 let monstersHealth = chosenMaxLife;
 let hasBonusLife = true;
+adjustHealthBars(chosenMaxLife);
 
 function reset() {
     playersHealth = chosenMaxLife;
